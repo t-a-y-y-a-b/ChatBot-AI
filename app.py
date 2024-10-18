@@ -1,8 +1,14 @@
 import streamlit as st
-import nltk
-from nltk.chat.util import Chat, reflections
 
-# Download the required NLTK data if not already present
+# Check if NLTK is installed
+try:
+    import nltk
+    from nltk.chat.util import Chat, reflections
+except ModuleNotFoundError:
+    st.error("The 'nltk' library is not installed. Please install it by running: pip install nltk")
+    st.stop()
+
+# Download the required NLTK data
 nltk.download('punkt', quiet=True)
 
 # Define chatbot patterns and responses
